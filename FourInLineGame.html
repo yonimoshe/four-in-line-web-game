@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+    <title>Four in line</title>
+    <!-- <style>
+     td{
+       background-image: url("https://www.iconsdb.com/icons/preview/white/circle-xxl.png");
+       background-repeat: no-repeat;
+       background-size: cover;
+     }
+    </style> -->
+
+  </head>
+  <body style="background-image:url('https://i.stack.imgur.com/jGlzr.png');">
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h1 id="player2"style="margin-top:150px; color:red; font-family: 'Merienda', cursive;"><b>Player 2</b></h1>
+    </div>
+    <div class="col-8">
+    <h1 style="text-align:center; margin:30px 0; font-family: 'Merienda', cursive;"><b> - Four in line - It's fun!</b></h1>
+    <table id="tbl" border="2px" style="margin:0 auto;">
+
+    </table>
+
+    <script>
+
+           var id=0;
+           function creat_bord(){
+              var tbl = document.getElementById('tbl');
+               for (var r = 0; r < 6; r++) {
+                 var row = document.createElement('tr');
+                 for (var c = 0; c < 7; c++) {
+                    var cell = document.createElement('td');
+                    cell.width = "80px";
+                    cell.height = "80px";
+                    cell.id = id++;
+                    cell.style.backgroundColor = "white";
+                 row.appendChild(cell);
+                 // cell.innerHTML = id-1;
+                 }//coll loop
+                 tbl.appendChild(row);
+               }// row loop
+
+           }
+
+           creat_bord();
+             var count=0;
+             td = document.querySelectorAll('td');
+             for (var i = 0; i < 42; i++) {
+             td[i].addEventListener('click',function(e){
+               if(e.target.style.backgroundColor!=="yellow" && e.target.style.backgroundColor!=="red"){
+               var temp = parseInt(e.path[0].id);
+               console.log(temp);
+               if(34<temp){
+               if(count%2 === 0){
+               e.target.style.backgroundColor = "yellow";
+               console.log(e.path[0].id);
+               count++;
+             }else{
+               e.target.style.backgroundColor = "red";
+               count++;
+             }
+           }else{
+              while (td[temp].style.backgroundColor !=="yellow" && td[temp].style.backgroundColor!=="red" ) {
+                temp+=7;
+                if(temp>=42){break;}
+              }// while
+              if(count%2 === 0){
+             td[temp-7].style.backgroundColor="yellow";
+             count++;
+           }else {
+             td[temp-7].style.backgroundColor="red";
+             count++;
+           }
+           }
+          } //end of if for empty cell case
+          else if (e.target.style.backgroundColor==="yellow" || e.target.style.backgroundColor==="red") {
+            var temp = parseInt(e.path[0].id)-7;
+            while (td[temp].style.backgroundColor ==="yellow" || td[temp].style.backgroundColor==="red" ) {
+              temp-=7;
+              console.log(td[temp]);
+            }// while loop for climing to empty cell
+
+           if(count%2 === 0){
+          td[temp].style.backgroundColor="yellow";
+          count++;
+        }else {
+          td[temp].style.backgroundColor="red";
+          count++;
+        }
+          }//end of else if
+             });
+          }
+
+    </script>
+    </div>
+    <div class="col-2">
+     <h1 id="player1" style="margin-top:150px; Color:yellow; font-family: 'Merienda', cursive;"><b>Player 1</b></h1>
+    </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </body>
+</html>
