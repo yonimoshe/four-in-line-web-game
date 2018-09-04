@@ -1,4 +1,3 @@
-# my_repository
-projects
+# for in line game
+four in line game - written in vanilla js for DOM practice.
 
-hello everyone !
